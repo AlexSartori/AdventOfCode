@@ -6,3 +6,4 @@ I'll try to use each day something different to solve the proposed problem.
 Index:
 - Day 1: Python 3
 - Day 2: x86 Assembly
+- Day 3: Ruby
