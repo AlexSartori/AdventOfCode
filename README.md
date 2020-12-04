@@ -3,8 +3,11 @@
 
 I'll try to use each day something different to solve the proposed problem.
 
-Index:
-- Day 1: Python 3
-- Day 2: x86 Assembly
-- Day 3: Ruby
-- Day 4: Perl
+#### Index:
+- [Day 1](Day%201): Python 3
+- [Day 2](Day%202): x86 Assembly
+- [Day 3](Day%203): Ruby
+- [Day 4](Day%204): Perl
+
+---
+*Copyright 2020, Alessandro Sartori*
