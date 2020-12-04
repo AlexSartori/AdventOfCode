@@ -1,3 +1,5 @@
+#!/usr/bin/perl
+
 @fields = ('byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'); #, 'cid');
 @valid_records = 0;
 open(FH, '<', 'input') or die $!;
