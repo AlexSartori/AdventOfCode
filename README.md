@@ -8,6 +8,7 @@ I'll try to use each day something different to solve the proposed problem.
 - [Day 2](Day%202): x86 Assembly
 - [Day 3](Day%203): Ruby
 - [Day 4](Day%204): Perl
+- [Day 5](Day%205): PHP
 
 ---
 *Copyright 2020, Alessandro Sartori*
