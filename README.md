@@ -9,7 +9,7 @@ I'll try to use each day something different to solve the proposed problem.
 - [Day 3](#day-3-toboggan-trajectory): Ruby
 - [Day 4](#day-4-passport-processing): Perl
 - [Day 5](#day-5-binary-boarding): PHP
-- [Day 6](#day-6-custom-cutoms): QuickBASIC 4.5
+- [Day 6](#day-6-custom-customs): QuickBASIC 4.5
 
 ---
 
