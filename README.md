@@ -9,6 +9,7 @@ I'll try to use each day something different to solve the proposed problem.
 - [Day 3](#day-3-toboggan-trajectory): Ruby
 - [Day 4](#day-4-passport-processing): Perl
 - [Day 5](#day-5-binary-boarding): PHP
+- [Day 6](#day-6-custom-cutoms): QuickBASIC 4.5
 
 ---
 
@@ -95,6 +96,15 @@ You board your plane only to discover a new problem: you dropped your boarding p
 
 #### Part 2
 Ding! The "fasten seat belt" signs have turned on. Time to find your seat. It's a completely full flight, so your seat should be the only missing boarding pass in your list. However, there's a catch: some of the seats at the very front and back of the plane don't exist on this aircraft, so they'll be missing from your list as well. Your seat wasn't at the very front or back, though; the seats with IDs +1 and -1 from yours will be in your list. What is the ID of your seat?
+
+---
+
+## Day 6: Custom Customs
+#### Part 1
+As your flight approaches the regional airport where you'll switch to a much larger plane, customs declaration forms are distributed to the passengers. The form asks a series of 26 yes-or-no questions marked `a` through `z`. All you need to do is identify the questions for which anyone in your group answers "yes". Since your group is just you, this doesn't take very long. However, the person sitting next to you seems to be experiencing a language barrier and asks if you can help. For each of the people in their group, you write down the questions for which they answer "yes", one per line. Another group asks for your help, then another, and eventually you've collected answers from every group on the plane (your puzzle input). Each group's answers are separated by a blank line, and within each group, each person's answers are on a single line. For each group, count the number of questions to which anyone answered "yes". What is the sum of those counts?
+
+#### Part 2
+As you finish the last group's customs declaration, you notice that you misread one word in the instructions: you don't need to identify the questions to which *anyone* answered "yes"; you need to identify the questions to which *everyone* answered "yes"! For each group, count the number of questions to which everyone answered "yes". What is the sum of those counts?
 
 ---
 *Copyright 2020, Alessandro Sartori, problem statements taken from [adventofcode.com](https://adventofcode.com)*
