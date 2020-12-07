@@ -10,6 +10,7 @@ I'll try to use each day something different to solve the proposed problem.
 - [Day 4](#day-4-passport-processing): Perl
 - [Day 5](#day-5-binary-boarding): PHP
 - [Day 6](#day-6-custom-customs): QuickBASIC 4.5
+- [Day 7](#day-7-handy-haversacks): JavaScript
 
 ---
 
@@ -105,6 +106,15 @@ As your flight approaches the regional airport where you'll switch to a much lar
 
 #### Part 2
 As you finish the last group's customs declaration, you notice that you misread one word in the instructions: you don't need to identify the questions to which *anyone* answered "yes"; you need to identify the questions to which *everyone* answered "yes"! For each group, count the number of questions to which everyone answered "yes". What is the sum of those counts?
+
+---
+
+## Day 7: Handy Haversacks
+#### Part 1
+You land at the regional airport in time for your next flight. In fact, it looks like you'll even have time to grab some food: all flights are currently delayed due to issues in luggage processing. Due to recent aviation regulations, many rules (your puzzle input) are being enforced about bags and their contents; bags must be color-coded and must contain specific quantities of other color-coded bags. Apparently, nobody responsible for these regulations considered how long they would take to enforce! You have a `shiny gold` bag. If you wanted to carry it in at least one other bag, how many different bag colors would be valid for the outermost bag? (In other words: how many colors can, eventually, contain at least one `shiny gold` bag?)
+
+#### Part 2
+It's getting pretty expensive to fly these days - not because of ticket prices, but because of the ridiculous number of bags you need to buy! Of course, the actual rules have a small chance of going several levels deeper than this example; be sure to count all of the bags, even if the nesting becomes topologically impractical! How many individual bags are required inside your single shiny gold bag?
 
 ---
 *Copyright 2020, Alessandro Sartori, problem statements taken from [adventofcode.com](https://adventofcode.com)*
