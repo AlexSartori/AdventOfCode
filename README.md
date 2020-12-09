@@ -4,7 +4,7 @@
 I'll try to use each day something different to solve the proposed problem.
 
 #### Index:
-- [Day 1](#day-1-report-repair): Python 3
+- [Day 1](#day-1-report-repair): SQL
 - [Day 2](#day-2-password-philosophy): x86 Assembly
 - [Day 3](#day-3-toboggan-trajectory): Ruby
 - [Day 4](#day-4-passport-processing): Perl
