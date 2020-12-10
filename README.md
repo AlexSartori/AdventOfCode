@@ -13,6 +13,7 @@ I'll try to use each day something different to solve the proposed problem.
 - [Day 7](#day-7-handy-haversacks): JavaScript
 - [Day 8](#day-8-handheld-halting): Java
 - [Day 9](#day-9-encoding-error): CoffeeScript
+- [Day 10](#day-10-adapter-array): Bash
 
 ---
 
@@ -139,6 +140,15 @@ With your neighbor happily enjoying their video game, you turn your attention to
 
 #### Part 2
 The final step in breaking the XMAS encryption relies on the invalid number you just found: you must find a contiguous set of at least two numbers in your list which sum to the invalid number from step 1. To find the encryption weakness, add together the smallest and largest number in this contiguous range; What is the encryption weakness in your XMAS-encrypted list of numbers?
+
+## Day 10: Adapter Array
+#### Part 1
+Patched into the aircraft's data port, you discover weather forecasts of a massive tropical storm. Before you can figure out whether it will impact your vacation plans, however, your device suddenly turns off! Its battery is dead. You'll need to plug it in. There's only one problem: the charging outlet near your seat produces the wrong number of jolts. Always prepared, you make a list of all of the joltage adapters in your bag. Each of your joltage adapters is rated for a specific output joltage (your puzzle input). Any given adapter can take an input `1`, `2`, or `3` jolts lower than its rating and still produce its rated output joltage.
+In addition, your device has a built-in joltage adapter rated for `3` jolts higher than the highest-rated adapter in your bag. Treat the charging outlet near your seat as having an effective joltage rating of `0`. Since you have some time to kill, you might as well test all of your adapters. Wouldn't want to get to your resort and realize you can't even charge your device! If you use every adapter in your bag at once, what is the distribution of joltage differences between the charging outlet, the adapters, and your device?
+Find a chain that uses all of your adapters to connect the charging outlet to your device's built-in adapter and count the joltage differences between the charging outlet, the adapters, and your device. What is the number of 1-jolt differences multiplied by the number of 3-jolt differences?
+
+#### Part 2
+To completely determine whether you have enough adapters, you'll need to figure out how many different ways they can be arranged. Every arrangement needs to connect the charging outlet to your device. The previous rules about when adapters can successfully connect still apply. You glance back down at your bag and try to remember why you brought so many adapters; there must be more than a trillion valid ways to arrange them! Surely, there must be an efficient way to count the arrangements. What is the total number of distinct ways you can arrange the adapters to connect the charging outlet to your device?
 
 ---
 
