@@ -14,6 +14,7 @@ I'll try to use each day something different to solve the proposed problem.
 - [Day 8](#day-8-handheld-halting): Java
 - [Day 9](#day-9-encoding-error): CoffeeScript
 - [Day 10](#day-10-adapter-array): Bash
+- [Day 11](#day-11-seating-system): Python 3
 
 ---
 
@@ -149,6 +150,21 @@ Find a chain that uses all of your adapters to connect the charging outlet to yo
 
 #### Part 2
 To completely determine whether you have enough adapters, you'll need to figure out how many different ways they can be arranged. Every arrangement needs to connect the charging outlet to your device. The previous rules about when adapters can successfully connect still apply. You glance back down at your bag and try to remember why you brought so many adapters; there must be more than a trillion valid ways to arrange them! Surely, there must be an efficient way to count the arrangements. What is the total number of distinct ways you can arrange the adapters to connect the charging outlet to your device?
+
+## Day 11: Seating System
+#### Part 1
+Your plane lands with plenty of time to spare. The final leg of your journey is a ferry that goes directly to the tropical island where you can finally start your vacation. As you reach the waiting area to board the ferry, you realize you're so early, nobody else has even arrived yet! By modeling the process people use to choose (or abandon) their seat in the waiting area, you're pretty sure you can predict the best place to sit. You make a quick map of the seat layout (your puzzle input).
+The seat layout fits neatly on a grid. Each position is either floor (`.`), an empty seat (`L`), or an occupied seat (`#`).
+Now, you just need to model the people who will be arriving shortly. Fortunately, people are entirely predictable and always follow a simple set of rules. All decisions are based on the number of occupied seats adjacent to a given seat (one of the eight positions immediately up, down, left, right, or diagonal from the seat). The following rules are applied to every seat simultaneously:
+- If a seat is empty (`L`) and there are no occupied seats adjacent to it, the seat becomes occupied.
+- If a seat is occupied (`#`) and four or more seats adjacent to it are also occupied, the seat becomes empty.
+- Otherwise, the seat's state does not change.
+Floor (`.`) never changes; seats don't move, and nobody sits on the floor.
+Simulate your seating area by applying the seating rules repeatedly until no seats change state. How many seats end up occupied?
+
+#### Part 2
+As soon as people start to arrive, you realize your mistake. People don't just care about adjacent seats - they care about the first seat they can see in each of those eight directions! Now, instead of considering just the eight immediately adjacent seats, consider the first seat in each of those eight directions. Also, people seem to be more tolerant than you expected: it now takes five or more visible occupied seats for an occupied seat to become empty (rather than four or more from the previous rules). The other rules still apply: empty seats that see no occupied seats become occupied, seats matching no rule don't change, and floor never changes.
+Given the new visibility method and the rule change for occupied seats becoming empty, once equilibrium is reached, how many seats end up occupied?
 
 ---
 
