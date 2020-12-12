@@ -25,4 +25,4 @@ for dir, val in instructions:
     else:
         move(val, dir)
 
-print(abs(X + Y))
+print(abs(X) + abs(Y))

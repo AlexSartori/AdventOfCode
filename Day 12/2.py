@@ -37,4 +37,4 @@ for dir, val in instructions:
     else:
         move_waypoint(val, dir)
 
-print(abs(shipX + shipY))
+print(abs(shipX) + abs(shipY))
