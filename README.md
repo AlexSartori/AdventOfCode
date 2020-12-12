@@ -15,6 +15,8 @@ I'll try to use each day something different to solve the proposed problem.
 - [Day 9](#day-9-encoding-error): CoffeeScript
 - [Day 10](#day-10-adapter-array): Bash
 - [Day 11](#day-11-seating-system): Python 3
+Unsurprisingly, this is taking too much time and university exams are approaching. I'll try to keep up with the Advent of Code but I'll stick with the languages I know the most or I'm trying to learn. It's been fun spending an entire afternoon learning BASIC.
+- [Day 12](#day-12-rain-risk): Python 3
 
 ---
 
@@ -165,6 +167,29 @@ Simulate your seating area by applying the seating rules repeatedly until no sea
 #### Part 2
 As soon as people start to arrive, you realize your mistake. People don't just care about adjacent seats - they care about the first seat they can see in each of those eight directions! Now, instead of considering just the eight immediately adjacent seats, consider the first seat in each of those eight directions. Also, people seem to be more tolerant than you expected: it now takes five or more visible occupied seats for an occupied seat to become empty (rather than four or more from the previous rules). The other rules still apply: empty seats that see no occupied seats become occupied, seats matching no rule don't change, and floor never changes.
 Given the new visibility method and the rule change for occupied seats becoming empty, once equilibrium is reached, how many seats end up occupied?
+
+## Day 12: Rain Risk
+#### Part 1
+Your ferry made decent progress toward the island, but the storm came in faster than anyone expected. The ferry needs to take evasive actions! Unfortunately, the ship's navigation computer seems to be malfunctioning; rather than giving a route directly to safety, it produced extremely circuitous instructions. When the captain uses the PA system to ask if anyone can help, you quickly volunteer. The navigation instructions (your puzzle input) consists of a sequence of single-character actions paired with integer input values. After staring at them for a few minutes, you work out what they probably mean:
+- Action `N` means to move north by the given value.
+- Action `S` means to move south by the given value.
+- Action `E` means to move east by the given value.
+- Action `W` means to move west by the given value.
+- Action `L` means to turn left the given number of degrees.
+- Action `R` means to turn right the given number of degrees.
+- Action `F` means to move forward by the given value in the direction the ship is currently facing.
+The ship starts by facing east. Only the `L` and `R` actions change the direction the ship is facing. Figure out where the navigation instructions lead. What is the Manhattan distance between that location and the ship's starting position?
+
+#### Part 2
+Before you can give the destination to the captain, you realize that the actual action meanings were printed on the back of the instructions the whole time. Almost all of the actions indicate how to move a waypoint which is relative to the ship's position:
+- Action `N` means to move the waypoint north by the given value.
+- Action `S` means to move the waypoint south by the given value.
+- Action `E` means to move the waypoint east by the given value.
+- Action `W` means to move the waypoint west by the given value.
+- Action `L` means to rotate the waypoint around the ship left (counter-clockwise) the given number of degrees.
+- Action `R` means to rotate the waypoint around the ship right (clockwise) the given number of degrees.
+- Action `F` means to move forward to the waypoint a number of times equal to the given value.
+The waypoint starts `10` units east and `1` unit north relative to the ship. The waypoint is relative to the ship; that is, if the ship moves, the waypoint moves with it. Figure out where the navigation instructions actually lead. What is the Manhattan distance between that location and the ship's starting position?
 
 ---
 
