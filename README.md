@@ -15,6 +15,7 @@ I'll try to use each day something different to solve the proposed problem.
 - [Day 9](#day-9-encoding-error): CoffeeScript
 - [Day 10](#day-10-adapter-array): Bash
 - [Day 11](#day-11-seating-system): Python 3
+
 Unsurprisingly, this is taking too much time and university exams are approaching. I'll try to keep up with the Advent of Code but I'll stick with the languages I know the most or I'm trying to learn. It's been fun spending an entire afternoon learning BASIC.
 - [Day 12](#day-12-rain-risk): Python 3
 
