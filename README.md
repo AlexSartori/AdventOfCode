@@ -18,6 +18,7 @@ I'll try to use each day something different to solve the proposed problem.
 
 Unsurprisingly, this is taking too much time and university exams are approaching. I'll try to keep up with the Advent of Code but I'll stick with the languages I know the most or I'm trying to learn. It's been fun spending an entire afternoon learning BASIC.
 - [Day 12](#day-12-rain-risk): Python 3
+- [Day 13](#day-13-shuttle-search): Python 3
 
 ---
 
@@ -191,6 +192,13 @@ Before you can give the destination to the captain, you realize that the actual 
 - Action `R` means to rotate the waypoint around the ship right (clockwise) the given number of degrees.
 - Action `F` means to move forward to the waypoint a number of times equal to the given value.
 The waypoint starts `10` units east and `1` unit north relative to the ship. The waypoint is relative to the ship; that is, if the ship moves, the waypoint moves with it. Figure out where the navigation instructions actually lead. What is the Manhattan distance between that location and the ship's starting position?
+
+## Day 13: Shuttle Search
+#### Part 1
+Your ferry can make it safely to a nearby port, but it won't get much further. When you call to book another ship, you discover that no ships embark from that port to your vacation island. You'll need to get from the port to the nearest airport. Fortunately, a shuttle bus service is available to bring you from the sea port to the airport! Each bus has an ID number that also indicates how often the bus leaves for the airport. Bus schedules are defined based on a timestamp that measures the number of minutes since some fixed reference point in the past. At timestamp `0`, every bus simultaneously departed from the sea port. After that, each bus travels to the airport, then various other locations, and finally returns to the sea port to repeat its journey forever. The time this loop takes a particular bus is also its ID number: the bus with ID `5` departs from the sea port at timestamps `0`, `5`, `10`, `15`, and so on. The bus with ID `11` departs at `0`, `11`, `22`, `33`, and so on. If you are there when the bus departs, you can ride that bus to the airport! Your notes (your puzzle input) consist of two lines. The first line is your estimate of the earliest timestamp you could depart on a bus. The second line lists the bus IDs that are in service according to the shuttle company; entries that show `x` must be out of service, so you decide to ignore them. To save time once you arrive, your goal is to figure out the earliest bus you can take to the airport. (There will be exactly one such bus.) What is the ID of the earliest bus you can take to the airport multiplied by the number of minutes you'll need to wait for that bus?
+
+#### Part 2
+The shuttle company is running a contest: one gold coin for anyone that can find the earliest timestamp such that the first bus ID departs at that time and each subsequent listed bus ID departs at that subsequent minute. (The first line in your input is no longer relevant.) An `x` in the schedule means there are no constraints on what bus IDs must depart at that time. The only bus departures that matter are the listed bus IDs at their specific offsets from `t`. Those bus IDs can depart at other times, and other bus IDs can depart at those times. For example, in the list above, because bus ID `19` must depart seven minutes after the timestamp at which bus ID `7` departs, bus ID `7` will always also be departing with bus ID `19` at seven minutes after timestamp `t`. What is the earliest timestamp such that all of the listed bus IDs depart at offsets matching their positions in the list?
 
 ---
 
