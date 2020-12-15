@@ -212,6 +212,17 @@ For some reason, the sea port's computer system still can't communicate with you
 - If the bitmask bit is `X`, the corresponding memory address bit is floating.
 A floating bit is not connected to anything and instead fluctuates unpredictably. In practice, this means the floating bits will take on all possible values, potentially causing many memory addresses to be written all at once! The entire 36-bit address space still begins initialized to the value `0` at every address, and you still need the sum of all values left in memory at the end of the program. Execute the initialization program using an emulator for a version 2 decoder chip. What is the sum of all values left in memory after it completes?
 
+## Day 15: Rambunctious Recitation
+#### Part 1
+You catch the airport shuttle and try to book a new flight to your vacation island. Due to the storm, all direct flights have been cancelled, but a route is available to get around the storm. You take it. While you wait for your flight, you decide to check in with the Elves back at the North Pole. They're playing a memory game and are ever so excited to explain the rules! In this game, the players take turns saying numbers. They begin by taking turns reading from a list of starting numbers (your puzzle input). Then, each turn consists of considering the most recently spoken number:
+- If that was the first time the number has been spoken, the current player says `0`.
+- Otherwise, the number had been spoken before; the current player announces how many turns apart the number is from when it was previously spoken.
+So, after the starting numbers, each turn results in that player speaking aloud either `0` (if the last number is new) or an age (if the last number is a repeat). (The game ends when the Elves get sick of playing or dinner is ready, whichever comes first.)
+Their question for you is: what will be the `2020th` number spoken?
+
+#### Part 2
+Impressed, the Elves issue you a challenge: determine the `30000000th` number spoken. Given your starting numbers, what will be the `30000000th` number spoken?
+
 ---
 
 *Copyright 2020, Alessandro Sartori, problem statements taken from [adventofcode.com](https://adventofcode.com)*
