@@ -21,6 +21,7 @@ Unsurprisingly, this is taking too much time and university exams are approachin
 - [Day 13](#day-13-shuttle-search): Python 3
 - [Day 14](#day-14-docking-data): Python 3
 - [Day 15](#day-15-rambunctious-recitation): C
+- [Day 16](#day-16-ticket-transletion): Python 3
 
 ---
 
@@ -141,12 +142,16 @@ Run your copy of the boot code. Immediately before any instruction is executed a
 After some careful analysis, you believe that exactly one instruction is corrupted. Somewhere in the program, either a `jmp` is supposed to be a `nop`, or a `nop` is supposed to be a `jmp`. (No `acc` instructions were harmed in the corruption of this boot code.)
 The program is supposed to terminate by attempting to execute an instruction immediately after the last instruction in the file. By changing exactly one `jmp` or `nop`, you can repair the boot code and make it terminate correctly. Fix the program so that it terminates normally by changing exactly one `jmp` (to `nop`) or `nop` (to `jmp`). What is the value of the accumulator after the program terminates?
 
+---
+
 ## Day 9: Encoding Error
 #### Part 1
 With your neighbor happily enjoying their video game, you turn your attention to an open data port on the little screen in the seat in front of you. Though the port is non-standard, you manage to connect it to your computer through the clever use of several paperclips. Upon connection, the port outputs a series of numbers (your puzzle input). The data appears to be encrypted with the eXchange-Masking Addition System (XMAS) which, conveniently for you, is an old cypher with an important weakness. XMAS starts by transmitting a preamble of 25 numbers. After that, each number you receive should be the sum of any two of the 25 immediately previous numbers. The two numbers will have different values, and there might be more than one such pair. The first step of attacking the weakness in the XMAS data is to find the first number in the list (after the preamble) which is not the sum of two of the 25 numbers before it. What is the first number that does not have this property?
 
 #### Part 2
 The final step in breaking the XMAS encryption relies on the invalid number you just found: you must find a contiguous set of at least two numbers in your list which sum to the invalid number from step 1. To find the encryption weakness, add together the smallest and largest number in this contiguous range; What is the encryption weakness in your XMAS-encrypted list of numbers?
+
+---
 
 ## Day 10: Adapter Array
 #### Part 1
@@ -156,6 +161,8 @@ Find a chain that uses all of your adapters to connect the charging outlet to yo
 
 #### Part 2
 To completely determine whether you have enough adapters, you'll need to figure out how many different ways they can be arranged. Every arrangement needs to connect the charging outlet to your device. The previous rules about when adapters can successfully connect still apply. You glance back down at your bag and try to remember why you brought so many adapters; there must be more than a trillion valid ways to arrange them! Surely, there must be an efficient way to count the arrangements. What is the total number of distinct ways you can arrange the adapters to connect the charging outlet to your device?
+
+---
 
 ## Day 11: Seating System
 #### Part 1
@@ -171,6 +178,8 @@ Simulate your seating area by applying the seating rules repeatedly until no sea
 #### Part 2
 As soon as people start to arrive, you realize your mistake. People don't just care about adjacent seats - they care about the first seat they can see in each of those eight directions! Now, instead of considering just the eight immediately adjacent seats, consider the first seat in each of those eight directions. Also, people seem to be more tolerant than you expected: it now takes five or more visible occupied seats for an occupied seat to become empty (rather than four or more from the previous rules). The other rules still apply: empty seats that see no occupied seats become occupied, seats matching no rule don't change, and floor never changes.
 Given the new visibility method and the rule change for occupied seats becoming empty, once equilibrium is reached, how many seats end up occupied?
+
+---
 
 ## Day 12: Rain Risk
 #### Part 1
@@ -195,12 +204,16 @@ Before you can give the destination to the captain, you realize that the actual 
 - Action `F` means to move forward to the waypoint a number of times equal to the given value.
 The waypoint starts `10` units east and `1` unit north relative to the ship. The waypoint is relative to the ship; that is, if the ship moves, the waypoint moves with it. Figure out where the navigation instructions actually lead. What is the Manhattan distance between that location and the ship's starting position?
 
+---
+
 ## Day 13: Shuttle Search
 #### Part 1
 Your ferry can make it safely to a nearby port, but it won't get much further. When you call to book another ship, you discover that no ships embark from that port to your vacation island. You'll need to get from the port to the nearest airport. Fortunately, a shuttle bus service is available to bring you from the sea port to the airport! Each bus has an ID number that also indicates how often the bus leaves for the airport. Bus schedules are defined based on a timestamp that measures the number of minutes since some fixed reference point in the past. At timestamp `0`, every bus simultaneously departed from the sea port. After that, each bus travels to the airport, then various other locations, and finally returns to the sea port to repeat its journey forever. The time this loop takes a particular bus is also its ID number: the bus with ID `5` departs from the sea port at timestamps `0`, `5`, `10`, `15`, and so on. The bus with ID `11` departs at `0`, `11`, `22`, `33`, and so on. If you are there when the bus departs, you can ride that bus to the airport! Your notes (your puzzle input) consist of two lines. The first line is your estimate of the earliest timestamp you could depart on a bus. The second line lists the bus IDs that are in service according to the shuttle company; entries that show `x` must be out of service, so you decide to ignore them. To save time once you arrive, your goal is to figure out the earliest bus you can take to the airport. (There will be exactly one such bus.) What is the ID of the earliest bus you can take to the airport multiplied by the number of minutes you'll need to wait for that bus?
 
 #### Part 2
 The shuttle company is running a contest: one gold coin for anyone that can find the earliest timestamp such that the first bus ID departs at that time and each subsequent listed bus ID departs at that subsequent minute. (The first line in your input is no longer relevant.) An `x` in the schedule means there are no constraints on what bus IDs must depart at that time. The only bus departures that matter are the listed bus IDs at their specific offsets from `t`. Those bus IDs can depart at other times, and other bus IDs can depart at those times. What is the earliest timestamp such that all of the listed bus IDs depart at offsets matching their positions in the list?
+
+---
 
 ## Day 14: Docking Data
 #### Part 1
@@ -213,6 +226,8 @@ For some reason, the sea port's computer system still can't communicate with you
 - If the bitmask bit is `X`, the corresponding memory address bit is floating.
 A floating bit is not connected to anything and instead fluctuates unpredictably. In practice, this means the floating bits will take on all possible values, potentially causing many memory addresses to be written all at once! The entire 36-bit address space still begins initialized to the value `0` at every address, and you still need the sum of all values left in memory at the end of the program. Execute the initialization program using an emulator for a version 2 decoder chip. What is the sum of all values left in memory after it completes?
 
+---
+
 ## Day 15: Rambunctious Recitation
 #### Part 1
 You catch the airport shuttle and try to book a new flight to your vacation island. Due to the storm, all direct flights have been cancelled, but a route is available to get around the storm. You take it. While you wait for your flight, you decide to check in with the Elves back at the North Pole. They're playing a memory game and are ever so excited to explain the rules! In this game, the players take turns saying numbers. They begin by taking turns reading from a list of starting numbers (your puzzle input). Then, each turn consists of considering the most recently spoken number:
@@ -223,6 +238,17 @@ Their question for you is: what will be the `2020th` number spoken?
 
 #### Part 2
 Impressed, the Elves issue you a challenge: determine the `30000000th` number spoken. Given your starting numbers, what will be the `30000000th` number spoken?
+
+---
+
+## Day 16: Ticket Translation
+#### Part 1
+As you're walking to yet another connecting flight, you realize that one of the legs of your re-routed trip coming up is on a high-speed train. However, the train ticket you were given is in a language you don't understand. You should probably figure out what it says before you get to the train station after the next flight. Unfortunately, you can't actually read the words on the ticket. You can, however, read the numbers, and so you figure out the fields these tickets must have and the valid ranges for values in those fields. You collect the rules for ticket fields, the numbers on your ticket, and the numbers on other nearby tickets for the same train service (via the airport security cameras) together into a single document you can reference (your puzzle input).
+The rules for ticket fields specify a list of fields that exist somewhere on the ticket and the valid ranges of values for each field. For example, a rule like `class: 1-3 or 5-7` means that one of the fields in every ticket is named `class` and can be any value in the ranges `1-3` or `5-7` (inclusive, such that `3` and `5` are both valid in this field, but `4` is not). Each ticket is represented by a single line of comma-separated values. The values are the numbers on the ticket in the order they appear; every ticket has the same format: the first number is always the same specific field, the second number is always a different specific field, and so on - you just don't know what each position actually means! Start by determining which tickets are completely invalid; these are tickets that contain values which aren't valid for any field. Ignore your ticket for now. It doesn't matter which position corresponds to which field; you can identify invalid nearby tickets by considering only whether tickets contain values that are not valid for any field.
+Adding together all of the invalid values produces your ticket scanning error rate. Consider the validity of the nearby tickets you scanned. What is your ticket scanning error rate?
+
+#### Part 2
+Now that you've identified which tickets contain invalid values, discard those tickets entirely. Use the remaining valid tickets to determine which field is which. Using the valid ranges for each field, determine what order the fields appear on the tickets. The order is consistent between all tickets: if seat is the third field, it is the third field on every ticket, including your ticket. Once you work out which field is which, look for the six fields on your ticket that start with the word departure. What do you get if you multiply those six values together?
 
 ---
 
