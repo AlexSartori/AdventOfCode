@@ -20,6 +20,7 @@ Unsurprisingly, this is taking too much time and university exams are approachin
 - [Day 12](#day-12-rain-risk): Python 3
 - [Day 13](#day-13-shuttle-search): Python 3
 - [Day 14](#day-14-docking-data): Python 3
+- [Day 15](#day-15-rambunctious-recitation): C
 
 ---
 
