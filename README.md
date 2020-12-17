@@ -18,7 +18,7 @@ I'll try to use each day something different to solve the proposed problem.
 
 Unsurprisingly, this is taking too much time and university exams are approaching. I'll try to keep up with the Advent of Code but I'll stick with the languages I know the most or I'm trying to learn. It's been fun spending an entire afternoon learning BASIC.
 - [Day 12](#day-12-rain-risk): Python 3
-- [Day 13](#day-13-shuttle-search): Python 3
+- [Day 13](#day-13-shuttle-search): Python 3 / C + CUDA
 - [Day 14](#day-14-docking-data): Python 3
 - [Day 15](#day-15-rambunctious-recitation): C
 - [Day 16](#day-16-ticket-transletion): Python 3
@@ -134,9 +134,11 @@ It's getting pretty expensive to fly these days - not because of ticket prices, 
 #### Part 1
 Your flight to the major airline hub reaches cruising altitude without incident. While you consider checking the in-flight menu for one of those drinks that come with a little umbrella, you are interrupted by the kid sitting next to you. Their handheld game console won't turn on! They ask if you can take a look. You narrow the problem down to a strange infinite loop in the boot code (your puzzle input) of the device. You should be able to fix it, but first you need to be able to run the code in isolation.
 The boot code is represented as a text file with one instruction per line of text. Each instruction consists of an operation (`acc`, `jmp`, or `nop`) and an argument (a signed number like `+4` or `-20`).
+
 - `acc` increases or decreases a single global value called the accumulator by the value given in the argument. For example, `acc +7` would increase the accumulator by `7`. The accumulator starts at `0`. After an acc instruction, the instruction immediately below it is executed next.
 - `jmp` jumps to a new instruction relative to itself. The next instruction to execute is found using the argument as an offset from the `jmp` instruction; for example, `jmp +2` would skip the next instruction, `jmp +1` would continue to the instruction immediately below it, and `jmp -20` would cause the instruction `20` lines above to be executed next.
 - `nop` stands for `No OPeration` - it does nothing. The instruction immediately below it is executed next.
+
 Run your copy of the boot code. Immediately before any instruction is executed a second time, what value is in the accumulator?
 
 #### Part 2
@@ -170,9 +172,11 @@ To completely determine whether you have enough adapters, you'll need to figure 
 Your plane lands with plenty of time to spare. The final leg of your journey is a ferry that goes directly to the tropical island where you can finally start your vacation. As you reach the waiting area to board the ferry, you realize you're so early, nobody else has even arrived yet! By modeling the process people use to choose (or abandon) their seat in the waiting area, you're pretty sure you can predict the best place to sit. You make a quick map of the seat layout (your puzzle input).
 The seat layout fits neatly on a grid. Each position is either floor (`.`), an empty seat (`L`), or an occupied seat (`#`).
 Now, you just need to model the people who will be arriving shortly. Fortunately, people are entirely predictable and always follow a simple set of rules. All decisions are based on the number of occupied seats adjacent to a given seat (one of the eight positions immediately up, down, left, right, or diagonal from the seat). The following rules are applied to every seat simultaneously:
+
 - If a seat is empty (`L`) and there are no occupied seats adjacent to it, the seat becomes occupied.
 - If a seat is occupied (`#`) and four or more seats adjacent to it are also occupied, the seat becomes empty.
 - Otherwise, the seat's state does not change.
+
 Floor (`.`) never changes; seats don't move, and nobody sits on the floor.
 Simulate your seating area by applying the seating rules repeatedly until no seats change state. How many seats end up occupied?
 
@@ -185,6 +189,7 @@ Given the new visibility method and the rule change for occupied seats becoming 
 ## Day 12: Rain Risk
 #### Part 1
 Your ferry made decent progress toward the island, but the storm came in faster than anyone expected. The ferry needs to take evasive actions! Unfortunately, the ship's navigation computer seems to be malfunctioning; rather than giving a route directly to safety, it produced extremely circuitous instructions. When the captain uses the PA system to ask if anyone can help, you quickly volunteer. The navigation instructions (your puzzle input) consists of a sequence of single-character actions paired with integer input values. After staring at them for a few minutes, you work out what they probably mean:
+
 - Action `N` means to move north by the given value.
 - Action `S` means to move south by the given value.
 - Action `E` means to move east by the given value.
@@ -192,10 +197,12 @@ Your ferry made decent progress toward the island, but the storm came in faster 
 - Action `L` means to turn left the given number of degrees.
 - Action `R` means to turn right the given number of degrees.
 - Action `F` means to move forward by the given value in the direction the ship is currently facing.
+
 The ship starts by facing east. Only the `L` and `R` actions change the direction the ship is facing. Figure out where the navigation instructions lead. What is the Manhattan distance between that location and the ship's starting position?
 
 #### Part 2
 Before you can give the destination to the captain, you realize that the actual action meanings were printed on the back of the instructions the whole time. Almost all of the actions indicate how to move a waypoint which is relative to the ship's position:
+
 - Action `N` means to move the waypoint north by the given value.
 - Action `S` means to move the waypoint south by the given value.
 - Action `E` means to move the waypoint east by the given value.
@@ -203,6 +210,7 @@ Before you can give the destination to the captain, you realize that the actual 
 - Action `L` means to rotate the waypoint around the ship left (counter-clockwise) the given number of degrees.
 - Action `R` means to rotate the waypoint around the ship right (clockwise) the given number of degrees.
 - Action `F` means to move forward to the waypoint a number of times equal to the given value.
+
 The waypoint starts `10` units east and `1` unit north relative to the ship. The waypoint is relative to the ship; that is, if the ship moves, the waypoint moves with it. Figure out where the navigation instructions actually lead. What is the Manhattan distance between that location and the ship's starting position?
 
 ---
@@ -222,9 +230,11 @@ As your ferry approaches the sea port, the captain asks for your help again. The
 
 #### Part 2
 For some reason, the sea port's computer system still can't communicate with your ferry's docking program. It must be using version 2 of the decoder chip! A version 2 decoder chip doesn't modify the values being written at all. Instead, it acts as a memory address decoder. Immediately before a value is written to memory, each bit in the bitmask modifies the corresponding bit of the destination memory address in the following way:
+
 - If the bitmask bit is `0`, the corresponding memory address bit is unchanged.
 - If the bitmask bit is `1`, the corresponding memory address bit is overwritten with `1`.
 - If the bitmask bit is `X`, the corresponding memory address bit is floating.
+
 A floating bit is not connected to anything and instead fluctuates unpredictably. In practice, this means the floating bits will take on all possible values, potentially causing many memory addresses to be written all at once! The entire 36-bit address space still begins initialized to the value `0` at every address, and you still need the sum of all values left in memory at the end of the program. Execute the initialization program using an emulator for a version 2 decoder chip. What is the sum of all values left in memory after it completes?
 
 ---
@@ -232,8 +242,10 @@ A floating bit is not connected to anything and instead fluctuates unpredictably
 ## Day 15: Rambunctious Recitation
 #### Part 1
 You catch the airport shuttle and try to book a new flight to your vacation island. Due to the storm, all direct flights have been cancelled, but a route is available to get around the storm. You take it. While you wait for your flight, you decide to check in with the Elves back at the North Pole. They're playing a memory game and are ever so excited to explain the rules! In this game, the players take turns saying numbers. They begin by taking turns reading from a list of starting numbers (your puzzle input). Then, each turn consists of considering the most recently spoken number:
+
 - If that was the first time the number has been spoken, the current player says `0`.
 - Otherwise, the number had been spoken before; the current player announces how many turns apart the number is from when it was previously spoken.
+
 So, after the starting numbers, each turn results in that player speaking aloud either `0` (if the last number is new) or an age (if the last number is a repeat). (The game ends when the Elves get sick of playing or dinner is ready, whichever comes first.)
 Their question for you is: what will be the `2020th` number spoken?
 
@@ -257,8 +269,10 @@ Now that you've identified which tickets contain invalid values, discard those t
 #### Part 1
 As your flight slowly drifts through the sky, the Elves at the Mythical Information Bureau at the North Pole contact you. They'd like some help debugging a malfunctioning experimental energy source aboard one of their super-secret imaging satellites. The experimental energy source is based on cutting-edge technology: a set of Conway Cubes contained in a pocket dimension! When you hear it's having problems, you can't help but agree to take a look. The pocket dimension contains an infinite 3-dimensional grid. At every integer 3-dimensional coordinate (`x,y,z`), there exists a single cube which is either active or inactive. In the initial state of the pocket dimension, almost all cubes start inactive. The only exception to this is a small flat region of cubes (your puzzle input); the cubes in this region start in the specified active (`#`) or inactive (`.`) state. The energy source then proceeds to boot up by executing six cycles.
 Each cube only ever considers its neighbors: any of the `26` other cubes where any of their coordinates differ by at most `1`. During a cycle, all cubes simultaneously change their state according to the following rules:
+
 - If a cube is active and exactly `2` or `3` of its neighbors are also active, the cube remains active. Otherwise, the cube becomes inactive.
 - If a cube is inactive but exactly `3` of its neighbors are active, the cube becomes active. Otherwise, the cube remains inactive.
+
 The engineers responsible for this experimental energy source would like you to simulate the pocket dimension and determine what the configuration of cubes should be at the end of the six-cycle boot process. Even though the pocket dimension is 3-dimensional, this initial state represents a small 2-dimensional slice of it. Starting with your given initial configuration, simulate six cycles. How many cubes are left in the active state after the sixth cycle?
 
 #### Part 2
