@@ -25,6 +25,8 @@ Unsurprisingly, this is taking too much time and university exams are approachin
 - [Day 17](#day-17-conway-cubes): Python 3
 - [Day 18](#day-18-operation-order): Python 3
 - [Day 19](#day-19-monster-messages): Python 3
+- [Day 20](#): Too much to study :(
+- [Day 21](#day-21-allergen-assessment): Python 3
 
 ---
 
@@ -302,6 +304,20 @@ As you look over the list of messages, you realize your matching rules aren't qu
 11: 42 31 | 42 11 31
 ```
 This small change has a big impact: now, the rules do contain loops, and the list of messages they could hypothetically match is infinite. You'll need to determine how these changes affect which messages are valid. Fortunately, many of the rules are unaffected by this change; it might help to start by looking at which rules always match the same set of values and how those rules (especially rules `42` and `31`) are used by the new versions of rules `8` and `11`. (Remember, you only need to handle the rules you have; building a solution that could handle any hypothetical combination of rules would be significantly more difficult). After updating rules `8` and `11`, how many messages completely match rule `0`?
+
+---
+
+## Day 20
+
+---
+
+## Day 21
+#### Part 1
+You reach the train's last stop and the closest you can get to your vacation island without getting wet. There aren't even any boats here, but nothing can stop you now: you build a raft. You just need a few days' worth of food for your journey. You don't speak the local language, so you can't read any ingredients lists. However, sometimes, allergens are listed in a language you do understand. You should be able to use this information to determine which ingredient contains which allergen and work out which foods are safe to take with you on your trip. You start by compiling a list of foods (your puzzle input), one food per line. Each line includes that food's ingredients list followed by some or all of the allergens the food contains. Each allergen is found in exactly one ingredient. Each ingredient contains zero or one allergen. Allergens aren't always marked; when they're listed (as in `(contains nuts, shellfish)` after an ingredients list), the ingredient that contains each listed allergen will be somewhere in the corresponding ingredients list. However, even if an allergen isn't listed, the ingredient that contains that allergen could still be present: maybe they forgot to label it, or maybe it was labeled in a language you don't know.
+The first step is to determine which ingredients can't possibly contain any of the allergens in any food in your list. Determine which ingredients cannot possibly contain any of the allergens in your list. How many times do any of those ingredients appear?
+
+#### Part 2
+Now that you've isolated the inert ingredients, you should have enough information to figure out which ingredient contains which allergen. Arrange the ingredients alphabetically by their allergen and separate them by commas to produce your canonical dangerous ingredient list. (There should not be any spaces in your canonical dangerous ingredient list). Time to stock your raft with supplies. What is your canonical dangerous ingredient list?
 
 ---
 
