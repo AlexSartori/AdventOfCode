@@ -25,7 +25,7 @@ Unsurprisingly, this is taking too much time and university exams are approachin
 - [Day 17](#day-17-conway-cubes): Python 3
 - [Day 18](#day-18-operation-order): Python 3
 - [Day 19](#day-19-monster-messages): Python 3
-- [Day 20](#): Too much to study :(
+- [Day 20](#day-20-jurassic-jigsaw): Python 3
 - [Day 21](#day-21-allergen-assessment): Python 3
 - [Day 22](#day-22-crab-combat): Python 3
 
@@ -308,8 +308,19 @@ This small change has a big impact: now, the rules do contain loops, and the lis
 
 ---
 
-## Day 20
--
+## Day 20: Jurassic Jigsaw
+#### Part 1
+The high-speed train leaves the forest and quickly carries you south. You can even see a desert in the distance! Since you have some spare time, you might as well see if there was anything interesting in the image the Mythical Information Bureau satellite captured. After decoding the satellite messages, you discover that the data actually contains many small images created by the satellite's camera array. The camera array consists of many cameras; rather than produce a single square image, they produce many smaller square image tiles that need to be reassembled back into a single image. Each camera in the camera array returns a single monochrome image tile with a random unique ID number. The tiles (your puzzle input) arrived in a random order. Worse yet, the camera array appears to be malfunctioning: each image tile has been rotated and flipped to a random orientation. Your first task is to reassemble the original image by orienting the tiles so they fit together. To show how the tiles should be reassembled, each tile's image data includes a border that should line up exactly with its adjacent tiles. All tiles have this border, and the border lines up exactly when the tiles are both oriented correctly. Tiles at the edge of the image also have this border, but the outermost edges won't line up with any other tiles.
+To check that you've assembled the image correctly, multiply the IDs of the four corner tiles together. Assemble the tiles into an image. What do you get if you multiply together the IDs of the four corner tiles?
+
+#### Part 2
+Now, you're ready to check the image for sea monsters. The borders of each tile are not part of the actual image; start by removing them. Now, you're ready to search for sea monsters! Because your image is monochrome, a sea monster will look like this:
+```
+                  #
+#    ##    ##    ###
+ #  #  #  #  #  #   
+```
+When looking for this pattern in the image, the spaces can be anything; only the `#` need to match. Also, you might need to rotate or flip your image before it's oriented correctly to find sea monsters. Determine how rough the waters are in the sea monsters' habitat by counting the number of `#` that are not part of a sea monster.
 
 ---
 
