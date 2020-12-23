@@ -28,6 +28,7 @@ Unsurprisingly, this is taking too much time and university exams are approachin
 - [Day 20](#day-20-jurassic-jigsaw): Python 3
 - [Day 21](#day-21-allergen-assessment): Python 3
 - [Day 22](#day-22-crab-combat): Python 3
+- [Day 23](#day-23-crab-cups): Python 3
 
 ---
 
@@ -348,6 +349,22 @@ You lost to the small crab! Fortunately, crabs aren't very good at recursion. To
 - Otherwise, at least one player must not have enough cards left in their deck to recurse; the winner of the round is the player with the higher-value card.
 
 As in regular Combat, the winner of the round (even if they won the round by winning a sub-game) takes the two cards dealt at the beginning of the round and places them on the bottom of their own deck (again so that the winner's card is above the other card). Note that the winner's card might be the lower-valued of the two cards if they won the round due to winning a sub-game. If collecting cards by winning the round causes a player to have all of the cards, they win, and the game ends. During a round of Recursive Combat, if both players have at least as many cards in their own decks as the number on the card they just dealt, the winner of the round is determined by recursing into a sub-game of Recursive Combat. To play a sub-game of Recursive Combat, each player creates a new deck by making a copy of the next cards in their deck (the quantity of cards copied is equal to the number on the card they drew to trigger the sub-game). During this sub-game, the game that triggered it is on hold and completely unaffected; no cards are removed from players' decks to form the sub-game. Defend your honor as Raft Captain by playing the small crab in a game of Recursive Combat using the same two decks as before. What is the winning player's score?
+
+---
+
+## Day 23: Crab Cups
+#### Part 1
+The small crab challenges you to a game! The crab is going to mix up some cups, and you have to predict where they'll end up. The cups will be arranged in a circle and labeled clockwise (your puzzle input). Before the crab starts, it will designate the first cup in your list as the current cup. The crab is then going to do `100` moves. Each move, the crab does the following actions:
+
+- The crab picks up the three cups that are immediately clockwise of the current cup. They are removed from the circle; cup spacing is adjusted as necessary to maintain the circle.
+- The crab selects a destination cup: the cup with a label equal to the current cup's label minus one. If this would select one of the cups that was just picked up, the crab will keep subtracting one until it finds a cup that wasn't just picked up. If at any point in this process the value goes below the lowest value on any cup's label, it wraps around to the highest value on any cup's label instead.
+- The crab places the cups it just picked up so that they are immediately clockwise of the destination cup. They keep the same order as when they were picked up.
+- The crab selects a new current cup: the cup which is immediately clockwise of the current cup.
+
+After the crab is done, what order will the cups be in? Starting after the cup labeled `1`, collect the other cups' labels clockwise into a single string with no extra characters; each number except `1` should appear exactly once. Using your labeling, simulate `100` moves. What are the labels on the cups after cup `1`?
+
+#### Part 2
+Due to what you can only assume is a mistranslation (you're not exactly fluent in Crab), you are quite surprised when the crab starts arranging many cups in a circle on your raft - one million (`1000000`) in total. Your labeling is still correct for the first few cups; after that, the remaining cups are just numbered in an increasing fashion starting from the number after the highest number in your list and proceeding one by one until one million is reached. In this way, every number from one through one million is used exactly once. After discovering where you made the mistake in translating Crab Numbers, you realize the small crab isn't going to do merely `100` moves; the crab is going to do ten million (`10000000`) moves! The crab is going to hide your stars - one each - under the two cups that will end up immediately clockwise of cup `1`. You can have them if you predict what the labels on those cups will be when the crab is finished. Determine which two cups will end up immediately clockwise of cup `1`. What do you get if you multiply their labels together?
 
 ---
 
