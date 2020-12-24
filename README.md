@@ -29,6 +29,7 @@ Unsurprisingly, this is taking too much time and university exams are approachin
 - [Day 21](#day-21-allergen-assessment): Python 3
 - [Day 22](#day-22-crab-combat): Python 3
 - [Day 23](#day-23-crab-cups): Python 3
+- [Day 24](#day-24-lobby-layout): Python 3
 
 ---
 
@@ -365,6 +366,20 @@ After the crab is done, what order will the cups be in? Starting after the cup l
 
 #### Part 2
 Due to what you can only assume is a mistranslation (you're not exactly fluent in Crab), you are quite surprised when the crab starts arranging many cups in a circle on your raft - one million (`1000000`) in total. Your labeling is still correct for the first few cups; after that, the remaining cups are just numbered in an increasing fashion starting from the number after the highest number in your list and proceeding one by one until one million is reached. In this way, every number from one through one million is used exactly once. After discovering where you made the mistake in translating Crab Numbers, you realize the small crab isn't going to do merely `100` moves; the crab is going to do ten million (`10000000`) moves! The crab is going to hide your stars - one each - under the two cups that will end up immediately clockwise of cup `1`. You can have them if you predict what the labels on those cups will be when the crab is finished. Determine which two cups will end up immediately clockwise of cup `1`. What do you get if you multiply their labels together?
+
+---
+
+## Day 24: Lobby Layout
+#### Part 1
+Your raft makes it to the tropical island; it turns out that the small crab was an excellent navigator. You make your way to the resort. As you enter the lobby, you discover a small problem: the floor is being renovated. You can't even reach the check-in desk until they've finished installing the new tile floor. The tiles are all hexagonal; they need to be arranged in a hex grid with a very specific color pattern. Not in the mood to wait, you offer to help figure out the pattern. The tiles are all white on one side and black on the other. They start with the white side facing up. The lobby is large enough to fit whatever pattern might need to appear there. A member of the renovation crew gives you a list of the tiles that need to be flipped over (your puzzle input). Each line in the list identifies a single tile that needs to be flipped by giving a series of steps starting from a reference tile in the very center of the room (every line starts from the same reference tile). Because the tiles are hexagonal, every tile has six neighbors: east, southeast, southwest, west, northwest, and northeast. These directions are given in your list, respectively, as `e`, `se`, `sw`, `w`, `nw`, and `ne`. A tile is identified by a series of these directions with no delimiters; Each time a tile is identified, it flips from white to black or from black to white. Tiles might be flipped more than once. Go through the renovation crew's list and determine which tiles they need to flip. After all of the instructions have been followed, how many tiles are left with the black side up?
+
+#### Part 2
+The tile floor in the lobby is meant to be a living art exhibit. Every day, the tiles are all flipped according to the following rules:
+
+- Any black tile with zero or more than 2 black tiles immediately adjacent to it is flipped to white.
+- Any white tile with exactly 2 black tiles immediately adjacent to it is flipped to black.
+
+Here, tiles immediately adjacent means the six tiles directly touching the tile in question. The rules are applied simultaneously to every tile; put another way, it is first determined which tiles need to be flipped, then they are all flipped at the same time. How many tiles will be black after `100` days?
 
 ---
 
