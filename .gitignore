@@ -1,0 +1,5 @@
+input
+.ccls-cache/
+*.o
+a.out
+
