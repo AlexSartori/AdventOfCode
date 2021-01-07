@@ -11,22 +11,31 @@ typedef struct {
 
 point_t wire_1[MAX_WIRE_LENGTH], wire_2[MAX_WIRE_LENGTH];
 int wire_1_len, wire_2_len;
+int distances_1[MAX_WIRE_LENGTH], distances_2[MAX_WIRE_LENGTH];
 
 void load_wires();
 point_t intersect(point_t, point_t, point_t, point_t);
 
 int main() {
     load_wires();
+    //
+    // for (int i = 0; i <= wire_1_len; i++)
+    //     printf("%d ", distances_1[i]);
+    // printf("\n");
 
     int closest = -1;
-    for (int i = 0; i < wire_1_len - 1; i++) {
+    for (int i = 0; i < wire_1_len; i++) {
         point_t p1 = wire_1[i], p2 = wire_1[i+1];
-        for (int j = 0; j < wire_2_len - 1; j++) {
+        for (int j = 0; j < wire_2_len; j++) {
             point_t p3 = wire_2[j], p4 = wire_2[j+1];
             point_t inter = intersect(p1, p2, p3, p4);
-            int dist = abs(inter.x) + abs(inter.y);
-            if (dist != 0 && (dist < closest || closest == -1))
-                closest = dist;
+            if (inter.x != 0 && inter.y != 0) {
+                int dist = distances_1[i] + distances_2[j];
+                dist += abs(p1.x - inter.x) + abs(p1.y - inter.y);
+                dist += abs(p3.x - inter.x) + abs(p3.y - inter.y);
+                if (dist < closest || closest == -1)
+                    closest = dist;
+            }
         }
     }
 
@@ -37,13 +46,14 @@ int main() {
 void load_wires() {
     FILE *f = fopen("input", "r");
     point_t* wire = wire_1;
-    int* wire_len = &wire_1_len;
+    int *wire_len = &wire_1_len;
+    int *distance = distances_1;
     int x = 0, y = 0, buf_idx = 0;
     char c, dir, buf[8];
 
     point_t p; p.x = p.y = 0;
+    distances_1[0] = distances_2[0] = 0;
     wire_1[0] = wire_2[0] = p;
-    (*wire_len)++;
 
     while ((c = fgetc(f)) != EOF) {
         if (c == ',' || c == '\n') {
@@ -54,14 +64,24 @@ void load_wires() {
 
             if (dir == 'R' || dir == 'L')
                 p.x = (x += val * (dir == 'R' ? 1 : -1));
-            else if (dir == 'U' || dir == 'D')
+            if (dir == 'U' || dir == 'D')
                 p.y = (y += val * (dir == 'D' ? 1 : -1));
-            wire[(*wire_len)++] = p;
+
+            point_t prev = wire[*wire_len];
+            int dist = distance[*wire_len] + abs(prev.x-p.x) + abs(prev.y-p.y);
+            (*wire_len)++;
+            for (int k = 0; k < *wire_len; k++)
+                if (wire[k].x == p.x && wire[k].y == p.y) {
+                    dist = distance[k];
+                    break;
+                }
+            distance[*wire_len] = dist;
+            wire[*wire_len] = p;
 
             if (c == '\n' && wire != wire_2) {
                 wire = wire_2;
                 wire_len = &wire_2_len;
-                (*wire_len)++;
+                distance = distances_2;
                 x = y = buf_idx = 0;
             }
         } else if (c >= '0' && c <= '9') {
