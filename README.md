@@ -39,4 +39,21 @@ It turns out that this circuit is very timing-sensitive; you actually need to mi
 What is the fewest combined steps the wires must take to reach an intersection?
 
 ---
+
+## Day 4: Secure Container
+#### Part 1
+You arrive at the Venus fuel depot only to discover it's protected by a password. The Elves had written the password on a sticky note, but someone threw it out. However, they do remember a few key facts about the password:
+
+- It is a six-digit number.
+- The value is within the range given in your puzzle input.
+- Two adjacent digits are the same.
+- Going from left to right, the digits never decrease; they only ever increase or stay the same.
+
+How many different passwords within the range given in your puzzle input meet these criteria?
+
+#### Part 2
+An Elf just remembered one more important detail: the two adjacent matching digits are not part of a larger group of matching digits.
+How many different passwords within the range given in your puzzle input meet all of the criteria?
+
+---
 Problem statements extrapolated from [adventofcode.com](https://adventofcode.com). Solutions and visualizations by me.
