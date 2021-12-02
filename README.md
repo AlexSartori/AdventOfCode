@@ -4,6 +4,7 @@ Previous year: [2020 branch](https://github.com/AlexSartori/AdventOfCode/tree/20
 
 #### Index:
 - [Day 1: Sonar Sweep](#day-1-sonar-sweep)
+- [Day 2: Dive!](#day-2-dive)
 
 ---
 
@@ -22,6 +23,32 @@ How many measurements are larger than the previous measurement?
 #### Part 2
 Considering every single measurement isn't as useful as you expected: there's just too much noise in the data.
 Instead, consider sums of a three-measurement sliding window. Your goal now is to count the number of times the sum of measurements in this sliding window increases from the previous sum. Consider sums of a three-measurement sliding window. How many sums are larger than the previous sum?
+
+---
+
+## Day 2: Dive!
+
+#### Part 1
+Now, you need to figure out how to pilot this thing.
+It seems like the submarine can take a series of commands like `forward 1`, `down 2`, or `up 3`:
+
+- `forward X` increases the horizontal position by `X` units.
+- `down X` increases the depth by `X` units.
+- `up X` decreases the depth by `X` units.
+
+Note that since you're on a submarine, down and up affect your depth, and so they have the opposite result of what you might expect. The submarine seems to already have a planned course (your puzzle input). You should probably figure out where it's going. Your horizontal position and depth both start at 0. Calculate the horizontal position and depth you would have after following the planned course. What do you get if you multiply your final horizontal position by your final depth?
+
+#### Part 2
+Based on your calculations, the planned course doesn't seem to make any sense. You find the submarine manual and discover that the process is actually slightly more complicated. In addition to horizontal position and depth, you'll also need to track a third value, aim, which also starts at 0. The commands also mean something entirely different than you first thought:
+
+- `down X` increases your aim by `X` units.
+- `up X` decreases your aim by `X` units.
+- `forward X` does two things:
+  - It increases your horizontal position by `X` units.
+  - It increases your depth by your aim multiplied by `X`.
+
+Again note that since you're on a submarine, down and up do the opposite of what you might expect: "down" means aiming in the positive direction.
+Using this new interpretation of the commands, calculate the horizontal position and depth you would have after following the planned course. What do you get if you multiply your final horizontal position by your final depth?
 
 ---
 
