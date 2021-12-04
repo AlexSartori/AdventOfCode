@@ -6,6 +6,7 @@ Previous year: [2020 branch](https://github.com/AlexSartori/AdventOfCode/tree/20
 - [Day 1: Sonar Sweep](#day-1-sonar-sweep)
 - [Day 2: Dive!](#day-2-dive)
 - [Day 3: Binary Diagnostic](#day-3-binary-diagnostic)
+- [Day 4: Giant Squid](#day-4-giant-squid)
 
 ---
 
@@ -72,6 +73,18 @@ The bit criteria depends on which type of rating value you want to find:
 - To find CO2 scrubber rating, determine the least common value (`0` or `1`) in the current bit position, and keep only numbers with that bit in that position. If `0` and `1` are equally common, keep values with a `0` in the position being considered.
 
 Use the binary numbers in your diagnostic report to calculate the oxygen generator rating and CO2 scrubber rating, then multiply them together. What is the life support rating of the submarine? (Be sure to represent your answer in decimal, not binary).
+
+---
+
+## Day 4: Giant Squid
+
+#### Part 1
+You're already almost 1.5km (almost a mile) below the surface of the ocean, already so deep that you can't see any sunlight. What you can see, however, is a giant squid that has attached itself to the outside of your submarine. Maybe it wants to play bingo? Bingo is played on a set of boards each consisting of a 5x5 grid of numbers. Numbers are chosen at random, and the chosen number is marked on all boards on which it appears. (Numbers may not appear on all boards.) If all numbers in any row or any column of a board are marked, that board wins. (Diagonals don't count). The submarine has a bingo subsystem to help passengers (currently, you and the giant squid) pass the time. It automatically generates a random order in which to draw numbers and a random set of boards (your puzzle input). 
+The score of the winning board can now be calculated. Start by finding the sum of all unmarked numbers on that board; Then, multiply that sum by the number that was just called when the board won to get the final score. To guarantee victory against the giant squid, figure out which board will win first. What will your final score be if you choose that board?
+
+#### Part 2
+On the other hand, it might be wise to try a different strategy: let the giant squid win. You aren't sure how many bingo boards a giant squid could play at once, so rather than waste time counting its arms, the safe thing to do is to figure out which board will win last and choose that one. That way, no matter which boards it picks, it will win for sure.
+Figure out which board will win last. Once it wins, what would its final score be?
 
 ---
 
