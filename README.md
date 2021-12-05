@@ -7,6 +7,7 @@ Previous year: [2020 branch](https://github.com/AlexSartori/AdventOfCode/tree/20
 - [Day 2: Dive!](#day-2-dive)
 - [Day 3: Binary Diagnostic](#day-3-binary-diagnostic)
 - [Day 4: Giant Squid](#day-4-giant-squid)
+- [Day 5: Hydrothermal Venture](#day-5-hydrothermal-venture)
 
 ---
 
@@ -85,6 +86,17 @@ The score of the winning board can now be calculated. Start by finding the sum o
 #### Part 2
 On the other hand, it might be wise to try a different strategy: let the giant squid win. You aren't sure how many bingo boards a giant squid could play at once, so rather than waste time counting its arms, the safe thing to do is to figure out which board will win last and choose that one. That way, no matter which boards it picks, it will win for sure.
 Figure out which board will win last. Once it wins, what would its final score be?
+
+---
+
+## Day 5: Hydrothermal Venture
+
+#### Part 1
+You come across a field of hydrothermal vents on the ocean floor! These vents constantly produce large, opaque clouds, so it would be best to avoid them if possible. They tend to form in lines; the submarine helpfully produces a list of nearby lines of vents (your puzzle input) for you to review. Each line of vents is given as a line segment in the format `x1,y1 -> x2,y2` where `x1,y1` are the coordinates of one end the line segment and `x2,y2` are the coordinates of the other end. These line segments include the points at both ends. For now, only consider horizontal and vertical lines: lines where either `x1 = x2` or `y1 = y2`. To avoid the most dangerous areas, you need to determine the number of points where at least two lines overlap.
+Consider only horizontal and vertical lines. At how many points do at least two lines overlap?
+
+#### Part 2
+Unfortunately, considering only horizontal and vertical lines doesn't give you the full picture; you need to also consider diagonal lines. Because of the limits of the hydrothermal vent mapping system, the lines in your list will only ever be horizontal, vertical, or a diagonal line at exactly 45 degrees. You still need to determine the number of points where at least two lines overlap. Consider all of the lines. At how many points do at least two lines overlap?
 
 ---
 
