@@ -1,0 +1,18 @@
+fish = Hash.new(0)
+gets.split(',').map(&:to_i).each do |v|
+  fish[v] += 1
+end
+
+(0..255).each do |day|
+  fish[9] = fish[0]
+  fish[7] += fish[0]
+  fish[0] = 0
+  
+  (0..8).each do |i|
+    fish[i] = fish[i+1]
+  end
+
+  fish[9] = 0
+end
+
+puts fish.values.sum
