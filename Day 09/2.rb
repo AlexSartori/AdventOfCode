@@ -30,29 +30,10 @@ def expand_basin (x, y)
   $basins[y,x] = $b_idx
   size = 1
 
-  # Expand to the left
-  (x-1).downto(0).each { |x|
-    if $map[y][x] == 9 then break
-    else size += expand_basin(x, y) end
-  }
-  
-  # Expand to the right
-  (x+1).upto(w-1).each { |x|
-    if $map[y][x] == 9 then break
-    else size += expand_basin(x, y) end
-  }
-
-  # Expand below
-  (y-1).downto(0).each { |y|
-    if $map[y][x] == 9 then break
-    else size += expand_basin(x, y) end
-  }
-
-  # Expand above
-  (y+1).upto(h-1).each { |y|
-    if $map[y][x] == 9 then break
-    else size += expand_basin(x, y) end
-  }
+  size += expand_basin(x-1, y) if x > 0   and $map[y][x-1] != 9
+  size += expand_basin(x+1, y) if x < w-1 and $map[y][x+1] != 9
+  size += expand_basin(x, y-1) if y > 0   and $map[y-1][x] != 9
+  size += expand_basin(x, y+1) if y < h-1 and $map[y+1][x] != 9
 
   return size
 end
