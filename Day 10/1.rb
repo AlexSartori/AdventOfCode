@@ -1,23 +1,9 @@
-illegals = []
 score_map = Hash[')' => 3, ']' => 57, '}' => 1197, '>' => 25137]
+pairs = Hash['(' => ')', '[' => ']', '{' => '}', '<' => '>']
+illegals = []
 
 while line = gets
-  stack = []
-
-  line.strip.chars.each do |c|
-    if ['(', '[', '{', '<'].include? c
-      stack.append c
-    elsif
-        (c == ')' and stack[-1] == '(') or
-        (c == ']' and stack[-1] == '[') or
-        (c == '}' and stack[-1] == '{') or
-        (c == '>' and stack[-1] == '<') then
-      stack.pop
-    else
-      illegals.append c
-      break
-    end
-  end
+  illegals << line.strip.chars.reduce([]) { |s, c| (s.respond_to? 'upcase') ? s : ('([{<'.include? c) ? (s << c) : (pairs[s[-1]] == c ? (s.pop;s) : c) }
 end
 
-puts illegals.sum { |c| score_map[c] }
+puts illegals.select { |i| i.respond_to? 'upcase' }.sum { |c| score_map[c] }
