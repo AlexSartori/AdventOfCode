@@ -3,7 +3,7 @@ pairs = Hash['(' => ')', '[' => ']', '{' => '}', '<' => '>']
 illegals = []
 
 while line = gets
-  illegals << line.strip.chars.reduce([]) { |s, c| (s.respond_to? 'upcase') ? s : ('([{<'.include? c) ? (s << c) : (pairs[s[-1]] == c ? (s.pop;s) : c) }
+  illegals << line.strip.chars.reduce([]) { |s, c| (s.respond_to? 'upcase') ? s : ('([{<'.include? c) ? (s << c) : (pairs[s.pop] == c ? s : c) }
 end
 
 puts illegals.select { |i| i.respond_to? 'upcase' }.sum { |c| score_map[c] }
