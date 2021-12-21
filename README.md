@@ -10,6 +10,25 @@ Previous year: [2020 branch](https://github.com/AlexSartori/AdventOfCode/tree/20
 - [Day 5: Hydrothermal Venture](#day-5-hydrothermal-venture)
 - [Day 6: Lanterfish](#day-6-lanternfish)
 - [Day 7: The Treachery of Whales](#day-7-the-treachery-of-whales)
+- [Day 8: Seven Segment Search](#day-8-seven-segment-search)
+- [Day 9: Smoke Basin](#day-9-smoke-basin)
+- [Day 10: Syntax Scoring](#day-10-syntax-scoring)
+- [Day 11:](#day-11)
+- [Day 12:](#day-12)
+- [Day 13:](#day-13)
+- [Day 14:](#day-14)
+- [Day 15:](#day-15)
+- [Day 16:](#day-16)
+- [Day 17:](#day-17)
+- [Day 18:](#day-18)
+- [Day 19:](#day-19)
+- [Day 20:](#day-20)
+- [Day 21:](#day-21)
+- [Day 22:](#day-22)
+- [Day 23:](#day-23)
+- [Day 24:](#day-24)
+- [Day 25:](#day-25)
+
 
 ---
 
@@ -120,6 +139,190 @@ Determine the horizontal position that the crabs can align to using the least fu
 
 #### Part 2
 The crabs don't seem interested in your proposed solution. Perhaps you misunderstand crab engineering? As it turns out, crab submarine engines don't burn fuel at a constant rate. Instead, each change of 1 step in horizontal position costs 1 more unit of fuel than the last: the first step costs 1, the second step costs 2, the third step costs 3, and so on. As each crab moves, moving further becomes more expensive. This changes the best horizontal position to align them all on; Determine the horizontal position that the crabs can align to using the least fuel possible so they can make you an escape route! How much fuel must they spend to align to that position?
+
+---
+
+## Day 8: Seven Segment Search
+
+#### Part 1
+You barely reach the safety of the cave when the whale smashes into the cave mouth, collapsing it. Sensors indicate another exit to this cave at a much greater depth, so you have no choice but to press on.  As your submarine slowly makes its way through the cave system, you notice that the four-digit seven-segment displays in your submarine are malfunctioning; they must have been damaged during the escape. You'll be in a lot of trouble without them, so you'd better figure out what's wrong. Each digit of a seven-segment display is rendered by turning on or off any of seven segments named `a` through `g`:
+
+```
+  0:      1:      2:      3:      4:
+ aaaa    ....    aaaa    aaaa    ....
+b    c  .    c  .    c  .    c  b    c
+b    c  .    c  .    c  .    c  b    c
+ ....    ....    dddd    dddd    dddd
+e    f  .    f  e    .  .    f  .    f
+e    f  .    f  e    .  .    f  .    f
+ gggg    ....    gggg    gggg    ....
+
+  5:      6:      7:      8:      9:
+ aaaa    aaaa    aaaa    aaaa    aaaa
+b    .  b    .  .    c  b    c  b    c
+b    .  b    .  .    c  b    c  b    c
+ dddd    dddd    ....    dddd    dddd
+.    f  e    f  .    f  e    f  .    f
+.    f  e    f  .    f  e    f  .    f
+ gggg    gggg    ....    gggg    gggg
+```
+
+The problem is that the signals which control the segments have been mixed up on each display. The submarine is still trying to display numbers by producing output on signal wires `a` through `g`, but those wires are connected to segments randomly. Worse, the wire/segment connections are mixed up separately for each four-digit display! (All of the digits within a display use the same connections, though).
+So, you might know that only signal wires b and g are turned on, but that doesn't mean segments `b` and `g` are turned on: the only digit that uses two segments is `1`, so it must mean segments `c` and `f` are meant to be on. With just that information, you still can't tell which wire (`b`/`g`) goes to which segment (`c`/`f`). For that, you'll need to collect more information.
+For each display, you watch the changing signals for a while, make a note of all ten unique signal patterns you see, and then write down a single four digit output value (your puzzle input). Using the signal patterns, you should be able to work out which pattern corresponds to which digit.
+Each entry consists of ten unique signal patterns, a `|` delimiter, and finally the four digit output value. Within an entry, the same wire/segment connections are used (but you don't know what the connections actually are). The unique signal patterns correspond to the ten different ways the submarine tries to render a digit using the current wire/segment connections. Because `7` is the only digit that uses three segments, `dab` in the above example means that to render a `7`, signal lines `d`, `a`, and `b` are on. Because `4` is the only digit that uses four segments, `eafb` means that to render a `4`, signal lines `e`, `a`, `f`, and `b` are on.
+Using this information, you should be able to work out which combination of signal wires corresponds to each of the ten digits. Then, you can decode the four digit output value. Unfortunately, in the above example, all of the digits in the output value (`cdfeb` `fcadb` `cdfeb` `cdbaf`) use five segments and are more difficult to deduce. For now, focus on the easy digits. Because the digits 1, 4, 7, and 8 each use a unique number of segments, you should be able to tell which combinations of signals correspond to those digits.
+In the output values, how many times do digits 1, 4, 7, or 8 appear?
+
+#### Part 2
+Through a little deduction, you should now be able to determine the remaining digits. For each entry, determine all of the wire/segment connections and decode the four-digit output values. What do you get if you add up all of the output values?
+
+---
+
+## Day 9: Smoke Basin
+
+#### Part 1
+These caves seem to be lava tubes. Parts are even still volcanically active; small hydrothermal vents release smoke into the caves that slowly settles like rain. If you can model how the smoke flows through the caves, you might be able to avoid it and be that much safer. The submarine generates a heightmap of the floor of the nearby caves for you (your puzzle input). Smoke flows to the lowest point of the area it's in.
+Your first goal is to find the low points - the locations that are lower than any of its adjacent locations. Most locations have four adjacent locations (up, down, left, and right); locations on the edge or corner of the map have three or two adjacent locations, respectively. (Diagonal locations do not count as adjacent). The risk level of a low point is `1` plus its height.
+Find all of the low points on your heightmap. What is the sum of the risk levels of all low points on your heightmap?
+
+#### Part 2
+Next, you need to find the largest basins so you know what areas are most important to avoid. A basin is all locations that eventually flow downward to a single low point. Therefore, every low point has a basin, although some basins are very small. Locations of height 9 do not count as being in any basin, and all other locations will always be part of exactly one basin. The size of a basin is the number of locations within the basin, including the low point.
+What do you get if you multiply together the sizes of the three largest basins?
+
+---
+
+## Day 10: Syntax Scoring
+
+#### Part 1
+You ask the submarine to determine the best route out of the deep-sea cave, but it only replies:
+
+`Syntax error in navigation subsystem on line: all of them`
+
+All of them?! The damage is worse than you thought. You bring up a copy of the navigation subsystem (your puzzle input).
+The navigation subsystem syntax is made of several lines containing chunks. There are one or more chunks on each line, and chunks contain zero or more other chunks. Adjacent chunks are not separated by any delimiter; if one chunk stops, the next chunk (if any) can immediately start. Every chunk must open and close with one of four legal pairs of matching characters:
+
+- If a chunk opens with `(`, it must close with `)`.
+- If a chunk opens with `[`, it must close with `]`.
+- If a chunk opens with `{`, it must close with `}`.
+- If a chunk opens with `<`, it must close with `>`.
+
+So, `()` is a legal chunk that contains no other chunks, as is `[]`. More complex but valid chunks include `([])`, `{()()()}`, `<([{}])>`, `[<>({}){}[([])<>]]`, and even `(((((((((())))))))))`.
+Some lines are incomplete, but others are corrupted. Find and discard the corrupted lines first. A corrupted line is one where a chunk closes with the wrong character - that is, where the characters it opens and closes with do not form one of the four legal pairs listed above.
+Examples of corrupted chunks include `(]`, `{()()()`, `(((()))`, and `<([]){()}[{}])`. Such a chunk can appear anywhere within a line, and its presence causes the whole line to be considered corrupted. Some of the lines aren't corrupted, just incomplete; you can ignore these lines for now.
+Stop at the first incorrect closing character on each corrupted line.
+Did you know that syntax checkers actually have contests to see who can get the high score for syntax errors in a file? It's true! To calculate the syntax error score for a line, take the first illegal character on the line and look it up in the following table:
+
+- `)`: `3` points.
+- `]`: `57` points.
+- `}`: `1197` points.
+- `>`: `25137` points.
+
+Find the first illegal character in each corrupted line of the navigation subsystem. What is the total syntax error score for those errors?
+
+#### Part 2
+Now, discard the corrupted lines. The remaining lines are incomplete.
+Incomplete lines don't have any incorrect characters - instead, they're missing some closing characters at the end of the line. To repair the navigation subsystem, you just need to figure out the sequence of closing characters that complete all open chunks in the line. You can only use closing characters (), ], }, or >), and you must add them in the correct order so that only legal pairs are formed and all chunks end up closed.
+Did you know that autocomplete tools also have contests? It's true! The score is determined by considering the completion string character-by-character.
+Start with a total score of `0`. Then, for each character, multiply the total score by `5` and then increase the total score by the point value given for the character in the following table:
+
+- `)`: `1` point.
+- `]`: `2` points.
+- `}`: `3` points.
+- `>`: `4` points.
+
+Autocomplete tools are an odd bunch: the winner is found by sorting all of the scores and then taking the middle score. Find the completion string for each incomplete line, score the completion strings, and sort the scores. What is the middle score?
+
+---
+
+## Day 11:
+#### Part 1
+#### Part 2
+
+---
+
+## Day 12:
+#### Part 1
+#### Part 2
+
+---
+
+## Day 13:
+#### Part 1
+#### Part 2
+
+---
+
+## Day 14:
+#### Part 1
+#### Part 2
+
+---
+
+## Day 15:
+#### Part 1
+#### Part 2
+
+---
+
+## Day 16:
+#### Part 1
+#### Part 2
+
+---
+
+## Day 17:
+#### Part 1
+#### Part 2
+
+---
+
+## Day 18:
+#### Part 1
+#### Part 2
+
+---
+
+## Day 19:
+#### Part 1
+#### Part 2
+
+---
+
+## Day 20:
+#### Part 1
+#### Part 2
+
+---
+
+## Day 21:
+#### Part 1
+#### Part 2
+
+---
+
+## Day 22:
+#### Part 1
+#### Part 2
+
+---
+
+## Day 23:
+#### Part 1
+#### Part 2
+
+---
+
+## Day 24:
+#### Part 1
+#### Part 2
+
+---
+
+## Day 25:
+#### Part 1
+#### Part 2
+
 
 ---
 
