@@ -13,9 +13,9 @@ Previous year: [2020 branch](https://github.com/AlexSartori/AdventOfCode/tree/20
 - [Day 8: Seven Segment Search](#day-8-seven-segment-search)
 - [Day 9: Smoke Basin](#day-9-smoke-basin)
 - [Day 10: Syntax Scoring](#day-10-syntax-scoring)
-- [Day 11:](#day-11)
-- [Day 12:](#day-12)
-- [Day 13:](#day-13)
+- [Day 11: Dumbo Octopus](#day-11-dumbo-octopus)
+- [Day 12: Passage Pathing](#day-12-passage-pathing)
+- [Day 13: Transparent Origami](#day-13-transparent-origami)
 - [Day 14:](#day-14)
 - [Day 15:](#day-15)
 - [Day 16:](#day-16)
@@ -235,21 +235,59 @@ Autocomplete tools are an odd bunch: the winner is found by sorting all of the s
 
 ---
 
-## Day 11:
+## Day 11: Dumbo Octopus
+
 #### Part 1
+You enter a large cavern full of rare bioluminescent dumbo octopuses! They seem to not like the Christmas lights on your submarine, so you turn them off for now.
+There are 100 octopuses arranged neatly in a 10 by 10 grid. Each octopus slowly gains energy over time and flashes brightly for a moment when its energy is full. Although your lights are off, maybe you could navigate through the cave without disturbing the octopuses if you could predict when the flashes of light will happen.
+Each octopus has an energy level - your submarine can remotely measure the energy level of each octopus (your puzzle input).
+The energy level of each octopus is a value between `0` and `9`. You can model the energy levels and flashes of light in steps. During a single step, the following occurs:
+
+- First, the energy level of each octopus increases by `1`.
+- Then, any octopus with an energy level greater than `9` flashes. This increases the energy level of all adjacent octopuses by `1`, including octopuses that are diagonally adjacent. If this causes an octopus to have an energy level greater than `9`, it also flashes. This process continues as long as new octopuses keep having their energy level increased beyond `9`. (An octopus can only flash at most once per step).
+- Finally, any octopus that flashed during this step has its energy level set to` 0`, as it used all of its energy to flash.
+
+Adjacent flashes can cause an octopus to flash on a step even if it begins that step with very little energy.
+Given the starting energy levels of the dumbo octopuses in your cavern, simulate 100 steps. How many total flashes are there after 100 steps?
+
 #### Part 2
+It seems like the individual flashes aren't bright enough to navigate. However, you might have a better option: the flashes seem to be synchronizing!
+If you can calculate the exact moments when the octopuses will all flash simultaneously, you should be able to navigate through the cavern. What is the first step during which all octopuses flash?
 
 ---
 
-## Day 12:
+## Day 12: Passage Pathing
+
 #### Part 1
+With your submarine's subterranean subsystems subsisting suboptimally, the only way you're getting out of this cave anytime soon is by finding a path yourself. Not just a path - the only way to know if you've found the best path is to find all of them.
+Fortunately, the sensors are still mostly working, and so you build a rough map of the remaining caves (your puzzle input).
+This is a list of how all of the caves are connected. You start in the cave named `start`, and your destination is the cave named `end`.
+Your goal is to find the number of distinct paths that start at start, end at end, and don't visit small caves more than once. There are two types of caves: big caves (written in uppercase) and small caves (written in lowercase). It would be a waste of time to visit any small cave more than once, but big caves are large enough that it might be worth visiting them multiple times. So, all paths you find should visit small caves at most once, and can visit big caves any number of times.
+How many paths through this cave system are there that visit small caves at most once?
+
 #### Part 2
+After reviewing the available paths, you realize you might have time to visit a single small cave twice. Specifically, big caves can be visited any number of times, a single small cave can be visited at most twice, and the remaining small caves can be visited at most once. However, the caves named `start` and `end` can only be visited exactly once each: once you leave the `start` cave, you may not return to it, and once you reach the `end` cave, the path must end immediately.
+Given these new rules, how many paths through this cave system are there?
 
 ---
 
-## Day 13:
+## Day 13: Transparent Origami
+
 #### Part 1
+You reach another volcanically active part of the cave. It would be nice if you could do some kind of thermal imaging so you could tell ahead of time which caves are too hot to safely enter.
+Fortunately, the submarine seems to be equipped with a thermal camera! When you activate it, you are greeted with:
+
+`Congratulations on your purchase! To activate this infrared thermal imaging camera system, please enter the code found on page 1 of the manual.`
+
+Apparently, the Elves have never used this feature. To your surprise, you manage to find the manual; as you go to open it, page 1 falls out. It's a large sheet of transparent paper! The transparent paper is marked with random dots and includes instructions on how to fold it up (your puzzle input).
+The first section is a list of dots on the transparent paper. `0,0` represents the top-left coordinate. The first value, `x`, increases to the right. The second value, `y`, increases downward. So, the coordinate `3,0` is to the right of `0,0`, and the coordinate `0,7` is below `0,0`.
+Then, there is a list of fold instructions. Each instruction indicates a line on the transparent paper and wants you to fold the paper up (for horizontal `y=...` lines) or left (for vertical `x=...` lines).
+The transparent paper is pretty big, so for now, focus on just completing the first fold.
+How many dots are visible after completing just the first fold instruction on your transparent paper?
+
 #### Part 2
+Finish folding the transparent paper according to the instructions. The manual says the code is always eight capital letters.
+What code do you use to activate the infrared thermal imaging camera system?
 
 ---
 
