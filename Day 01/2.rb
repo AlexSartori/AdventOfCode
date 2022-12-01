@@ -1,14 +1,2 @@
-elves = []
-curr_cals = 0
+p STDIN.read.split("\n\n").map{|v|v.split.map(&:to_i).sum}.sort[-3..].sum
 
-while l = gets do
-  if l.strip == "" then
-    elves << curr_cals
-    curr_cals = 0
-  else
-    cal_num = l.strip.to_i
-    curr_cals += cal_num
-  end
-end
-
-p elves.sort[-3..].sum
