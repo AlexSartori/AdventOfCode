@@ -10,3 +10,4 @@ Previous year: [2021 branch](https://github.com/AlexSartori/AdventOfCode/tree/20
 - [Day 04: Camp Cleanup](https://adventofcode.com/2022/day/4)
 - [Day 05: Supply Stacks](https://adventofcode.com/2022/day/5)
 - [Day 06: Tuning Trouble](https://adventofcode.com/2022/day/6)
+- [Day 07: No Space Left On Device](https://adventofcode.com/2022/day/7)
