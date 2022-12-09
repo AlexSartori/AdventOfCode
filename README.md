@@ -11,3 +11,5 @@ Previous year: [2021 branch](https://github.com/AlexSartori/AdventOfCode/tree/20
 - [Day 05: Supply Stacks](https://adventofcode.com/2022/day/5)
 - [Day 06: Tuning Trouble](https://adventofcode.com/2022/day/6)
 - [Day 07: No Space Left On Device](https://adventofcode.com/2022/day/7)
+- [Day 08: Treetop Tree House](https://adventofcode.com/2022/day/8)
+- [Day 09: Rope Bridge](https://adventofcode.com/2022/day/9)
