@@ -23,7 +23,7 @@ def monkey_turn m
         m.inspected += 1
         
         # 2. Update worry level
-        i = (eval m.op.gsub("old", i.to_s))
+        i = eval m.op.gsub("old", i.to_s)
         
         # 3. Yolo
         i %= $lcm
