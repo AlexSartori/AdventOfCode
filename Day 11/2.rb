@@ -23,7 +23,10 @@ def monkey_turn m
         m.inspected += 1
         
         # 2. Update worry level
-        i = (eval m.op.gsub("old", i.to_s)) % $lcm
+        i = (eval m.op.gsub("old", i.to_s))
+        
+        # 3. Yolo
+        i %= $lcm
 
         # 4. Test worry level
         t = i % m.test == 0
@@ -59,5 +62,4 @@ for i in 0...10000 do
 end
 
 res = $monkeys.values.map(&:inspected).sort
-p res
 p res[-1]*res[-2]
