@@ -16,3 +16,4 @@ Previous year: [2021 branch](https://github.com/AlexSartori/AdventOfCode/tree/20
 - [Day 10: Cathode-Ray Tube](https://adventofcode.com/2022/day/10)
 - [Day 11: Monkey in the Middle](https://adventofcode.com/2022/day/11)
 - [Day 12: Hill Climbing Algorithm](https://adventofcode.com/2022/day/12)
+- [Day 13: Distress Signal](https://adventofcode.com/2022/day/13)
