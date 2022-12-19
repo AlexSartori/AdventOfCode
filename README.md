@@ -18,3 +18,4 @@ Previous year: [2021 branch](https://github.com/AlexSartori/AdventOfCode/tree/20
 - [Day 12: Hill Climbing Algorithm](https://adventofcode.com/2022/day/12)
 - [Day 13: Distress Signal](https://adventofcode.com/2022/day/13)
 - [Day 14: Regolith Reservoir](https://adventofcode.com/2022/day/14)
+- [Day 15: Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)
