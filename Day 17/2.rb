@@ -19,27 +19,18 @@ rocks = [
 ]
 chamber = [['#']*CHAMBER_W]
 cache = Hash.new
-loop_h = nil
+add_to_final_h = nil
 
 
-def print_chamber chamber, rock, ry, rx
+def print_chamber chamber
     puts "\n"
-    rh, rw = rock.size, rock[0].size
     
     chamber.each_with_index do |chamber_line, y|
-        if y >= ry and y < ry + rh
-            rock_line = rock[y-ry]
-            chamber_line.each_with_index do |cell, x|
-                if x < rx or x >= rx+rw
-                    print cell.gsub('.', '.').gsub('#', '█')
-                else
-                    print rock_line[x-rx].gsub('.', '.').gsub('#', '▒') if rock_line[x-rx] == '#'
-                end
-            end
-            print "\n"
-        else
-            puts chamber_line.join('').gsub('.', '.').gsub('#', '█')
+        chamber_line.each_with_index do |cell, x|
+            print cell.gsub('.', '.').gsub('#', '█')
         end
+        print "\n"
+        puts chamber_line.join('').gsub('.', '.').gsub('#', '█')
     end
 end
 
@@ -64,26 +55,6 @@ push_idx = 0
 rock_idx = 0
 
 while step < N_STEPS do
-    # Check cache
-    nonempty_y = 0
-    nonempty_y += 1 until chamber[nonempty_y].include? '#'
-    key = [chamber[nonempty_y].join(''), rock_idx, push_idx]
-    if cache.has_key? key
-        puts "Loop found: #{key}"
-        old_step, old_h = cache[key]
-        curr_h = (chamber.size - 1) - nonempty_y
-        steps_floor = ((N_STEPS-old_step)/(step-old_step)).floor
-        missing_steps = (N_STEPS-old_step) % (step-old_step)
-        loop_h = (curr_h-old_h) * (steps_floor-1)
-        puts "oh: #{old_h}, ch: #{curr_h}, lh: #{loop_h}, sf: #{steps_floor}, ms: #{missing_steps}"
-        puts "Skipping to step: #{N_STEPS - missing_steps}"
-        step = N_STEPS - missing_steps
-        cache.clear
-    else
-        cache[key] = [step, (chamber.size-1) - nonempty_y]
-    end
-    
-    
     rock = rocks[rock_idx]
     rock_idx = (rock_idx + 1) % rocks.size
     
@@ -117,21 +88,41 @@ while step < N_STEPS do
         else
             ry += 1
         end
-        
-        if not falling
-            # Lay rock in the chamber
-            (0...rh).each do |ry_test|
-                (0...rw).each do |rx_test|
-                    chamber[ry+ry_test][rx+rx_test] = rock[ry_test][rx_test] if rock[ry_test][rx_test] == '#'
-                end
-            end
-            
-            step += 1
+    end
+    
+    # Lay rock in the chamber
+    (0...rh).each do |ry_test|
+        (0...rw).each do |rx_test|
+            chamber[ry+ry_test][rx+rx_test] = rock[ry_test][rx_test] if rock[ry_test][rx_test] == '#'
         end
+    end
+    
+    step += 1
+    
+    
+    # Check cache
+    next if step < 10
+    nonempty_y = 0
+    nonempty_y += 1 until chamber[nonempty_y].include? '#'
+    key = [chamber[nonempty_y..(nonempty_y+8)].join(''), rock_idx, push_idx]
+    
+    if cache.has_key? key
+        puts "Loop found: #{key}"
+        steps_before_loop, h_at_loop_start = cache[key]
+        curr_step, curr_h = step, chamber.size - nonempty_y - 1  # -1 => the floor
+        loop_steps_len = curr_step - steps_before_loop
+        loop_reps = ((N_STEPS - steps_before_loop)/(loop_steps_len)).floor
+        loop_h = curr_h - h_at_loop_start
+        step = steps_before_loop + (loop_steps_len * loop_reps)
+        puts "Curr step: #{curr_step} - skipping to step: #{step}"
+        add_to_final_h = loop_h * (loop_reps - 1)
+        cache.clear
+    else
+        cache[key] = [step, (chamber.size-1) - nonempty_y]
     end
 end
 
 nonempty_y = 0
 nonempty_y += 1 until chamber[nonempty_y].include? '#'
-puts (chamber.size - nonempty_y - 1) + loop_h
+puts (chamber.size - nonempty_y - 1) + add_to_final_h
 
