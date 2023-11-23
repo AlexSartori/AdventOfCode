@@ -1,0 +1,109 @@
+class Valve
+    attr_accessor :name, :flow, :tunnels
+    
+    def initialize name, flow, tunnels
+        @name = name
+        @flow = flow
+        @tunnels = tunnels
+    end
+end
+
+
+valves = Hash.new
+while l = gets
+    name, flow, links = /^Valve ([A-Z]+) .+ rate=([0-9]+); .+ valves? (.+)$/.match(l).captures
+    valves.store name, Valve.new(name, flow.to_i, links.split(", "))
+end
+
+t = 0
+# front -> [seq-1, seq-2, opened_valves, tot_flow]
+fronts = [ [['AA'], ['AA'], [], 0] ]
+
+until t == 26 do
+    puts "Situation at t: #{t}"
+    new_fronts = []
+    sleep(0.3)
+    
+    fronts.each do |p1, p2, open_valves, tot_flow|
+        puts "    Front with flow #{tot_flow}:"
+        puts "       1 => #{p1.join ','}"
+        puts "       2 => #{p2.join ','}"
+        puts "       Open valves: #{open_valves.join ','}"
+        tot_flow += open_valves.map{|v| valves[v].flow}.sum
+        
+        last1, last2 = valves[p1[-1]], valves[p2[-1]]
+        open1, open2 = false, false
+        
+        # 1. If not already opened, open these valves
+        open1 = true if not open_valves.include?(last1.name) and last1.flow > 0
+        open2 = true if not open_valves.include?(last2.name) and last2.flow > 0
+        
+        # 2. Move to the neighbors
+        moves1, moves2 = [], []
+        last1.tunnels.each do |t|
+            add = true
+            new_fronts.each do |s1, s2, o, f|
+                if s1[-1] == t and f > tot_flow
+                    add = false
+                end
+            end
+            moves1.append t if add
+        end
+        last2.tunnels.each do |t|
+            add = true
+            new_fronts.each do |s1, s2, o, f|
+                if s2[-1] == t and f > tot_flow
+                    add = false
+                end
+            end
+            moves2.append t if add
+        end
+        
+        moves1.each do |m1|
+            moves2.each do |m2|
+                new_fronts << [p1 + [m1], p2 + [m2], open_valves, tot_flow]
+            end
+            if open2
+                new_fronts << [p1 + [m1], p2, open_valves + [last2.name], tot_flow]
+            end
+        end
+        if open1
+            moves2.each do |m2|
+                new_fronts << [p1, p2 + [m2], open_valves + [last1.name], tot_flow]
+            end
+        end
+    end
+    
+    # Remove duplicate fronts
+    puts "Filtering #{fronts.size} fronts..."
+    i = 0
+    while i < new_fronts.size do
+        p11, p12, ov1, f1 = new_fronts[i]
+        inc_i = true
+        
+        j = 0
+        while j < new_fronts.size do
+            p21, p22, ov2, f2 = new_fronts[j]
+            
+            if i != j and ov1.sort == ov2.sort and ((p11[-1] == p21[-1] and p12[-1] == p22[-1]) or (p11[-1] == p22[-1] and p12[-1] == p21[-1]))
+                if f2 <= f1
+                    new_fronts.delete_at j
+                else
+                    new_fronts.delete_at i
+                    inc_i = false
+                    break
+                end
+             else
+                j += 1
+            end
+        end
+        
+        i += 1 if inc_i
+    end
+    
+    fronts = new_fronts.sort{|f|f[3]}
+    t += 1
+    
+    # fronts = fronts.sort{|f|f[3]}[(fronts.size/10)..] if fronts.size > 100
+end
+
