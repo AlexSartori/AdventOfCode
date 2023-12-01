@@ -1,0 +1,54 @@
+$segs_to_n = Hash[
+  'a' => [0, 2, 3, 5, 6, 7, 8, 9],
+  'b' => [0, 4, 5, 6, 8, 9],
+  'c' => [0, 1, 2, 3, 4, 7, 8, 9],
+  'd' => [2, 3, 4, 5, 6, 8, 9],
+  'e' => [0, 2, 6, 8],
+  'f' => [0, 1, 3, 4, 5, 6, 7, 8, 9],
+  'g' => [0, 2, 3, 5, 6, 8, 9]
+]
+
+$n_to_segs = Hash[
+  0 => 'abcefg',
+  1 => 'cf',
+  2 => 'acdeg',
+  3 => 'acdfg',
+  4 => 'bcdf',
+  5 => 'abdfg',
+  6 => 'abdefg',
+  7 => 'acf',
+  8 => 'abcdefg',
+  9 => 'abcdfg'
+]
+
+$len_to_n = Hash[2 => [1], 3 => [7], 4 => [4], 5 => [2, 3, 5], 6 => [0, 6, 9], 7 => [8]]
+
+def decode_outputs(p, o)
+  translator = Hash.new 'abcdefg'.split ''
+
+  p.each do |sym|
+    puts "Symbol: #{sym}"
+
+    $len_to_n[sym.length].each do |n|
+      puts "    Candidate number: #{n} - uses segments: #{$n_to_segs[n]}"
+
+      $n_to_segs[n].split('').each do |segment|
+        if $segs_to_n[segment].include? n then
+          translator[segment] = translator[segment].intersection(sym.split(''))
+        end
+      end
+
+      puts "    Translation table: #{translator}"
+    end
+  end
+
+  puts translator
+end
+
+while line = gets
+  patterns, output = line.strip.split('|').map &:split
+  res += decode_outputs patterns, output
+  break
+end
+
+puts res

@@ -1,0 +1,79 @@
+def throw_dice(i)
+  res = Hash.new 0
+  [1,2,3].repeated_permutation(3).each do |x|
+    res[x.sum] += 1
+  end
+  return res
+end
+
+def pos(i, prev_p)
+  res = Hash.new 0
+
+  prev_p.each do |prev, n1|
+    throw_dice(i).each do |thr, n2|
+      new_p = (prev + thr - 1) % 10 + 1
+      res[new_p] += n1*n2
+    end
+  end
+
+  return res
+end
+
+turn = 1
+pos_p1, pos_p2 = Hash[4 => 1], Hash[8 => 1]
+scores_p1, scores_p2 = Hash[0 => 1], Hash[0 => 1]
+p1_wins, p2_wins = 0, 0
+
+while pos_p1.length > 0 and pos_p2.length > 0
+  puts "-- Turn #{turn}"
+
+  if turn % 2 == 1
+    new_pos_p1 = pos(turn, pos_p1)
+    pos_p1 = Hash.new 0
+    new_scores_p1 = Hash.new 0
+
+    new_pos.each do |p, n|
+      
+    end
+    
+    new_pos_p1.each do |new_p, n1|
+      scores_p1.each do |s, n2|
+        if s + new_p < 21
+          new_scores_p1[s + new_p] += n2
+          pos_p1[new_p] += n1
+        else
+          p1_wins += n2
+        end
+      end
+    end
+    
+    scores_p1 = new_scores_p1
+    puts "  P1 positions: #{pos_p1}"
+    puts "  P1 scores: #{scores_p1}"
+    puts "  P1 wins: #{p1_wins}"
+  else
+    new_pos_p2 = pos(turn, pos_p2)
+    pos_p2 = Hash.new(0)
+    new_scores_p2 = Hash.new(0)
+
+    new_pos_p2.each do |new_p, n1|
+      scores_p2.each do |s, n2|
+        if s + new_p < 21
+          new_scores_p2[s + new_p] += n2
+          pos_p2[new_p] += n1
+        else
+          p2_wins += n2
+        end
+      end
+    end
+    
+    scores_p2 = new_scores_p2
+    puts "  P2 positions: #{pos_p2}"
+    puts "  P2 scores: #{scores_p2}"
+    puts "  P2 wins: #{p2_wins}"
+ end
+
+  turn += 1
+end
+
+puts "P1: #{p1_wins}\nP2: #{p2_wins}"
